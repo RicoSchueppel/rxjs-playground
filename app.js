@@ -8,14 +8,14 @@ app.controller('myController', ['myService','$scope',function(myService,$scope) 
     $scope.firstName= "John";
     $scope.lastName= "Doe";
 
-    const resultsSubscription = myService.mousedowns.subscribe((x) => {
+    const resultSubscription = myService.mousedowns.subscribe((x) => {
     	$scope.$applyAsync(() => c.mousedown = x);
-    	console.log(x);
+    	//console.log(x);
     });
 
     $scope.$on('$destroy', () => {
-      resultsSubscription.dispose();
-      console.log('resultsSubscription destroyed');
+      resultSubscription.dispose();
+      console.log('resultSubscription destroyed');
     })
 }]);
 
