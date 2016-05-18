@@ -5,8 +5,12 @@ app.controller('myController', function($scope) {
     $scope.lastName= "Doe";
 });
 
-var mousedowns = Rx.DOM.fromEvent(document,'mousedown');
-
-mousedowns.subscribe(function(x){
-  console.log(x);
+var mousedowns = Rx.DOM.fromEvent(document,'mousedown').map(function(event){
+	return {
+		x : event.clientX,
+		y : event.clientY
+	};
 });
+
+
+mousedowns.subscribe((x) => console.log(x));
